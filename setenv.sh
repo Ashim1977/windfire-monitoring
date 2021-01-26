@@ -11,8 +11,8 @@ coffee3="${coffee} ${coffee} ${coffee}"
 ##### Terminal Colors - END
 
 ###### Variable section - START
-CONTAINER_NETWORK=windfire-net
-MONITORING_NETWORK=monitoring-net
+CONTAINER_NETWORK=windfire_net
+MONITORING_NETWORK=monitoring_net
 DOCKER_HUB_ID=robipozzi
 ## Windfire Restaurants Backend environment variables
 WINDFIRE_CONTAINER_IMAGE_NAME=windfire-restaurants-node
