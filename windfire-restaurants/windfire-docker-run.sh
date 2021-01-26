@@ -1,4 +1,4 @@
-source $HOME/dev/windfire-proxy/setenv.sh
+source $HOME/dev/windfire-monitoring/setenv.sh
 
 echo ${cyn}Removing $WINDFIRE_CONTAINER_NAME container ...${end}
 docker rm -f $WINDFIRE_CONTAINER_NAME

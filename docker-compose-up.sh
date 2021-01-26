@@ -1,3 +1,3 @@
-source $HOME/dev/windfire-proxy/setenv.sh
+source $HOME/dev/windfire-monitoring/setenv.sh
 # Run Docker compose
 docker-compose up

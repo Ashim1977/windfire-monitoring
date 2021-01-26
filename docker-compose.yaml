@@ -33,7 +33,7 @@ services:
     - --config.file=/etc/prometheus/prometheus.yml
     - --web.external-url=/prometheus
     volumes:
-    - $HOME/dev/windfire-proxy/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml
+    - $HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -42,7 +42,7 @@ services:
       - windfire
     volumes:
     - $HOME/temp/grafana:/var/lib/grafana
-    - $HOME/dev/windfire-proxy/grafana/conf:/usr/share/grafana/conf
+    - $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf
   windfire-restaurants:
     image: robipozzi/windfire-restaurants-node:1.0
     container_name: windfire_restaurants_node
@@ -58,7 +58,7 @@ services:
       - monitoring
       - windfire
     volumes:
-    - $HOME/dev/windfire-proxy/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    - $HOME/dev/windfire-monitoring/nginx/default.conf:/etc/nginx/conf.d/default.conf
 networks:
   windfire:
     driver: bridge

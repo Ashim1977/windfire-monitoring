@@ -1,4 +1,4 @@
-source $HOME/dev/windfire-proxy/setenv.sh
+source $HOME/dev/windfire-monitoring/setenv.sh
 
 echo ${cyn}Removing $GRAFANA_CUSTOM_CONTAINER_IMAGE_NAME image ...${end}
 docker rmi -f $GRAFANA_CUSTOM_CONTAINER_IMAGE_NAME

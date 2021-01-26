@@ -1,4 +1,4 @@
-source $HOME/dev/windfire-proxy/setenv.sh
+source $HOME/dev/windfire-monitoring/setenv.sh
 
 echo ${cyn}Removing $INGRESS_CONTROLLER_CONTAINER_NAME container ...${end}
 docker rm -f $INGRESS_CONTROLLER_CONTAINER_NAME
@@ -16,7 +16,7 @@ echo ${cyn}Running $INGRESS_CONTROLLER_CONTAINER_NAME container ...${end}
 # Run NGINX Ingress controller with a custom created NGINX image
 #INGRESS_CONTROLLER_CMD_RUN="docker run --name $INGRESS_CONTROLLER_CONTAINER_NAME --network $CONTAINER_NETWORK -d -p 80:80 $INGRESS_CONTROLLER_IMAGE_NAME"
 # Run NGINX Ingress controller mounting configuration file as a volume
-INGRESS_CONTROLLER_CMD_RUN="docker run --name $INGRESS_CONTROLLER_CONTAINER_NAME --network $CONTAINER_NETWORK -d -p 80:80 -v $HOME/dev/windfire-proxy/nginx/default.conf:/etc/nginx/conf.d/default.conf $NGINX_CONTAINER_IMAGE_NAME:$NGINX_CONTAINER_IMAGE_VERSION"
+INGRESS_CONTROLLER_CMD_RUN="docker run --name $INGRESS_CONTROLLER_CONTAINER_NAME --network $CONTAINER_NETWORK -d -p 80:80 -v $HOME/dev/windfire-monitoring/nginx/default.conf:/etc/nginx/conf.d/default.conf $NGINX_CONTAINER_IMAGE_NAME:$NGINX_CONTAINER_IMAGE_VERSION"
 echo ${cyn}Running Nginx Ingress controller with:${end} ${grn}$INGRESS_CONTROLLER_CMD_RUN${end}
 $INGRESS_CONTROLLER_CMD_RUN
 # Docker Network inspect

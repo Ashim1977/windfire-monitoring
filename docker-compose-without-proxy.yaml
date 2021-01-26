@@ -39,7 +39,7 @@ services:
     command:
     - --config.file=/etc/prometheus/prometheus.yml
     volumes:
-    - $HOME/dev/windfire-proxy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    - $HOME/dev/windfire-monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
     - cadvisor
   grafana:
@@ -52,7 +52,7 @@ services:
       - windfire
     volumes:
     - $HOME/temp/grafana:/var/lib/grafana
-    - $HOME/dev/windfire-proxy/grafana/conf:/usr/share/grafana/conf
+    - $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf
   windfire-restaurants:
     image: robipozzi/windfire-restaurants-node:1.0
     container_name: windfire_restaurants_node
