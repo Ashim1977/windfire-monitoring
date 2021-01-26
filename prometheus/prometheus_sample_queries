@@ -1,0 +1,13 @@
+# Cadvisor metrics
+container_start_time_seconds{name="windfire_restaurants_node"}
+rate(container_cpu_usage_seconds_total{name="windfire_restaurants_node"}[1m])
+container_memory_usage_bytes{name="windfire_restaurants_node"}
+rate(container_network_transmit_bytes_total[1m])
+rate(container_network_receive_bytes_total[1m])
+
+# Nodeexporter metrics
+node_cpu_seconds_total
+node_exporter_build_info
+rate(node_cpu_seconds_total{mode="system"}[1m])
+node_filesystem_avail_bytes
+rate(node_network_receive_bytes_total[1m])

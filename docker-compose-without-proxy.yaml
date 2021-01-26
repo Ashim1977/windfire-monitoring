@@ -1,0 +1,67 @@
+version: '3.2'
+services:
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: nodeexporter
+    ports:
+    - 9101:9100
+    networks:
+      - monitoring
+      - windfire
+    command:
+      - '--path.rootfs=/host'
+    #network_mode: host
+    pid: host
+    restart: unless-stopped
+    #volumes:
+    #  - '/:/host:ro,rslave'
+  cadvisor:
+    image: gcr.io/google-containers/cadvisor:latest
+    container_name: cadvisor
+    ports:
+    - 8081:8080
+    networks:
+      - monitoring
+      - windfire
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+    - 9091:9090
+    networks:
+      - monitoring
+      - windfire
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+    - $HOME/dev/windfire-proxy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+    - cadvisor
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+    - 8085:3000
+    networks:
+      - monitoring
+      - windfire
+    volumes:
+    - $HOME/temp/grafana:/var/lib/grafana
+    - $HOME/dev/windfire-proxy/grafana/conf:/usr/share/grafana/conf
+  windfire-restaurants:
+    image: robipozzi/windfire-restaurants-node:1.0
+    container_name: windfire_restaurants_node
+    ports:
+    - 8083:8082
+    networks:
+      - windfire
+networks:
+  windfire:
+    driver: bridge
+  monitoring:
+    driver: bridge
