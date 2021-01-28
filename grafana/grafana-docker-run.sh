@@ -17,8 +17,8 @@ echo ${cyn}Running $GRAFANA_CONTAINER_NAME container ...${end}
 #CMD_RUN="docker run --name $GRAFANA_CONTAINER_NAME --network $CONTAINER_NETWORK -d -p 8085:3000 -v $HOME/temp/grafana:/var/lib/grafana $GRAFANA_CUSTOM_CONTAINER_IMAGE_NAME"
 #CMD_RUN="docker run --name $GRAFANA_CONTAINER_NAME --network $CONTAINER_NETWORK -d -v $HOME/temp/grafana:/var/lib/grafana $GRAFANA_CUSTOM_CONTAINER_IMAGE_NAME"
 # Run Grafana mounting configuration file as a volume
-#CMD_RUN="docker run --name $GRAFANA_CONTAINER_NAME --network $CONTAINER_NETWORK -d -p 8085:3000 -v $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf -v $HOME/temp/grafana:/var/lib/grafana $GRAFANA_CONTAINER_IMAGE_NAME:$GRAFANA_CONTAINER_IMAGE_VERSION"
-CMD_RUN="docker run --name $GRAFANA_CONTAINER_NAME --network $CONTAINER_NETWORK -d -v $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf -v $HOME/temp/grafana:/var/lib/grafana $GRAFANA_CONTAINER_IMAGE_NAME:$GRAFANA_CONTAINER_IMAGE_VERSION"
+#CMD_RUN="docker run --name $GRAFANA_CONTAINER_NAME --network $CONTAINER_NETWORK -d -p 8085:3000 -v $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf -v $HOME/temp/monitoring/grafana:/var/lib/grafana $GRAFANA_CONTAINER_IMAGE_NAME:$GRAFANA_CONTAINER_IMAGE_VERSION"
+CMD_RUN="docker run --name $GRAFANA_CONTAINER_NAME --network $CONTAINER_NETWORK -d -v $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf -v $HOME/temp/monitoring/grafana:/var/lib/grafana $GRAFANA_CONTAINER_IMAGE_NAME:$GRAFANA_CONTAINER_IMAGE_VERSION"
 echo ${cyn}Running Docker container with:${end} ${grn}$CMD_RUN${end}
 $CMD_RUN
 # Docker Network inspect

@@ -14,8 +14,8 @@ echo ${cyn}Docker network created${end}
 echo
 echo ${cyn}Running $PROMETHEUS_CONTAINER_NAME container ...${end}
 # Run PROMETHEUS mounting configuration file as a volume
-#CMD_RUN="docker run --name $PROMETHEUS_CONTAINER_NAME --network $MONITORING_NETWORK -d -p 9091:9090 -v $HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml -v $HOME/temp/prometheus:/prometheus $PROMETHEUS_CONTAINER_IMAGE_NAME:$PROMETHEUS_CONTAINER_IMAGE_VERSION --config.file=/etc/prometheus/prometheus.yml --web.external-url=/prometheus"
-CMD_RUN="docker run --name $PROMETHEUS_CONTAINER_NAME --network $MONITORING_NETWORK -d -v $HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml -v $HOME/temp/prometheus:/prometheus $PROMETHEUS_CONTAINER_IMAGE_NAME:$PROMETHEUS_CONTAINER_IMAGE_VERSION --config.file=/etc/prometheus/prometheus.yml --web.external-url=/prometheus"
+#CMD_RUN="docker run --name $PROMETHEUS_CONTAINER_NAME --network $MONITORING_NETWORK -d -p 9091:9090 -v $HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml -v $HOME/temp/monitoring/prometheus:/prometheus $PROMETHEUS_CONTAINER_IMAGE_NAME:$PROMETHEUS_CONTAINER_IMAGE_VERSION --config.file=/etc/prometheus/prometheus.yml --web.external-url=/prometheus"
+CMD_RUN="docker run --name $PROMETHEUS_CONTAINER_NAME --network $MONITORING_NETWORK -d -v $HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml -v $HOME/temp/monitoring/prometheus:/prometheus $PROMETHEUS_CONTAINER_IMAGE_NAME:$PROMETHEUS_CONTAINER_IMAGE_VERSION --config.file=/etc/prometheus/prometheus.yml --web.external-url=/prometheus"
 echo ${cyn}Running Docker container with:${end} ${grn}$CMD_RUN${end}
 $CMD_RUN
 # Connect to Docker Network inspect
