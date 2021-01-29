@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3.3'
 services:
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
@@ -6,26 +6,23 @@ services:
     ports:
     - 9101:9100
     networks:
-      - monitoring
-      - windfire
+      - monitoring_net
+      - windfire_net
     command:
       - '--path.rootfs=/host'
-    #network_mode: host
     pid: host
     restart: unless-stopped
-    #volumes:
-    #  - '/:/host:ro,rslave'
   cadvisor:
     image: gcr.io/google-containers/cadvisor:latest
     container_name: cadvisor
     ports:
     - 8081:8080
     networks:
-      - monitoring
-      - windfire
+      - monitoring_net
+      - windfire_net
     volumes:
     - /:/rootfs:ro
-    - /var/run:/var/run:rw
+    - /var/run/docker.sock:/var/run/docker.sock:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
   prometheus:
@@ -34,34 +31,45 @@ services:
     ports:
     - 9091:9090
     networks:
-      - monitoring
-      - windfire
+      - monitoring_net
+      - windfire_net
     command:
     - --config.file=/etc/prometheus/prometheus.yml
     volumes:
-    - $HOME/dev/windfire-monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-    depends_on:
-    - cadvisor
+    - $HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
     - 8085:3000
     networks:
-      - monitoring
-      - windfire
+      - monitoring_net
+      - windfire_net
     volumes:
-    - $HOME/temp/grafana:/var/lib/grafana
+    - $HOME/temp/monitoring/grafana:/var/lib/grafana
     - $HOME/dev/windfire-monitoring/grafana/conf:/usr/share/grafana/conf
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+    - 8001:8000 
+    - 9001:9000
+    networks:
+      - monitoring_net
+      - windfire_net
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - $HOME/temp/monitoring/portainer:/data
   windfire-restaurants:
     image: robipozzi/windfire-restaurants-node:1.0
     container_name: windfire_restaurants_node
     ports:
     - 8083:8082
     networks:
-      - windfire
+      - monitoring_net
+      - windfire_net
 networks:
-  windfire:
+  windfire_net:
     driver: bridge
-  monitoring:
+  monitoring_net:
     driver: bridge
