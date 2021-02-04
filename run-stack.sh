@@ -1,4 +1,3 @@
-echo $PWD
 source $HOME/dev/windfire-monitoring/setenv.sh
 # Remove running containers
 docker rm -f prometheus
