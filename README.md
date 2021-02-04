@@ -6,7 +6,7 @@
 - [Windfire Restaurants](#windfire-restaurants)
 - [Grafana](#grafana)
 - [Prometheus](#prometheus)
-- [Cadvisor](#cadvisor)
+- [cAdvisor](#cadvisor)
 - [Node Exporter](#node-exporter)
 - [Portainer](#portainer)
 
@@ -21,13 +21,13 @@ Nginx runs as a container and is configured as a Reverse Proxy, with several *pr
 - [Windfire Restaurants](#windfire-restaurants)
 - [Grafana](#grafana)
 - [Prometheus](#prometheus)
-- [Cadvisor](#cadvisor)
+- [cAdvisor](#cadvisor)
 - [Portainer](#portainer)
 
-Node Exporter does not have a relevant UI and for this reason runs in the backend and is not exposed through Nginx (see [Node Exporter](#node-exporter) paragraph for more details).
+Node Exporter does not have a relevant UI and for this reason it runs in the backend and is not exposed through Nginx (see [Node Exporter](#node-exporter) paragraph for more details).
 
 ## Before you start
-Before starting to experiment with the samples provided in this repository, you just need to have Docker and Docker Compose properly installed on your environment.
+Before starting to experiment with the samples provided in this repository, you just need to have Docker and Docker Compose properly installed in your environment.
 
 Refer to the following:
 - https://docs.docker.com/engine/install/ for Docker engine installation
@@ -54,7 +54,7 @@ To start the whole stack just run **[run-stack.sh](run-stack.sh)** script which 
 Nginx behavior is defined in a specific configuration file named **[default.conf](nginx/default.conf)**, that is loaded at container startup via a volume mapping.
 
 ## Windfire Restaurants 
-[TODO]
+Windfire Restaurants is a custom microservice I develop that simply exposes the */restaurants* endpoint to return a list of restaurants.
 
 ## Grafana
 [Grafana](https://grafana.com/) is an open-source platform for data visualization, monitoring and analysis that has become quite popular as a tool for Observability, allowing to query, visualize, alert on and understand environment metrics no matter where they are stored.
