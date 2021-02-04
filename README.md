@@ -11,7 +11,7 @@
 - [Portainer](#portainer)
 
 ## Introduction
-This repository holds scripts to configure and run an opinionated monitoring stack for containerized applications.
+This repository holds the scripts needed to configure and run an opinionated monitoring stack for containerized applications.
 
 All the tools are configured to run behind a Reverse Proxy, implemented with Nginx (https://www.nginx.com/), which shields and concentrates the access to several applications, as seen in the architecture diagram below.
 
@@ -33,7 +33,9 @@ Refer to the following:
 - https://docs.docker.com/engine/install/ for Docker engine installation
 - https://docs.docker.com/compose/install/ for Docker Compose installation
 
-To setup and run the whole stack I provided the Docker Compose file **[docker-compose.yaml](docker-compose.yaml)** that defines all the configurations needed, since some of the containers in the stack need to read configuration files and Volumes to persist data, before running the stack you will need to adjust the directories according to your specific environment, i.e.:
+Once done with the prerequisites installation, clone this repository to **$HOME/dev/windfire-monitoring** directory.
+
+To setup and run the whole stack, I provided the Docker Compose file **[docker-compose.yaml](docker-compose.yaml)** that defines all the configurations needed. Since some of the containers in the stack need to read configuration files from filesystem and Volumes to persist data, before running the stack you will need to adjust the directories according to your specific environment, i.e.:
 
 - Prometheus
     - the volume mapping *$HOME/dev/windfire-monitoring/prometheus/prometheus-proxied.yml:/etc/prometheus/prometheus.yml* tells the container to read Prometheus configuration file from a specific directory on the filesystem: change *$HOME/dev/windfire-monitoring/prometheus* according to your environment.

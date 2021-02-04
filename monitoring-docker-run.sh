@@ -1,3 +1,4 @@
+echo monitoring-docker-run.sh = $PWD
 source $HOME/dev/windfire-monitoring/setenv.sh
 # Run Windire Restaurants Backend
 source $HOME/dev/windfire-monitoring/windfire-restaurants/windfire-docker-run.sh

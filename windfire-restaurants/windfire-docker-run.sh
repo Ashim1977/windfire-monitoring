@@ -1,3 +1,4 @@
+echo windfire-docker-run.sh = $PWD
 source $HOME/dev/windfire-monitoring/setenv.sh
 
 echo ${cyn}Removing $WINDFIRE_CONTAINER_NAME container ...${end}
