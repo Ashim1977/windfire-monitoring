@@ -11,7 +11,7 @@
 - [Portainer](#portainer)
 
 ## Introduction
-This repository holds the scripts needed to configure and run an opinionated monitoring stack for containerized applications.
+This repository contains the scripts needed to configure and run an opinionated monitoring stack for containerized applications.
 
 All the tools are configured to run behind a Reverse Proxy, implemented with Nginx (https://www.nginx.com/), which shields and concentrates the access to several applications, as seen in the architecture diagram below.
 
